@@ -393,12 +393,12 @@ def getstrain(start, stop, ifo, filelist=None):
                 m_dq[key] = np.append(m_dq[key], dq[key])
 
     # -- Trim the data
-    lndx  = np.abs(start - m_start)*(1.0/dt)
-    rndx = np.abs(stop - m_start)*(1.0/dt)
+    lndx  = int(np.abs(start - m_start)*(1.0/dt))
+    rndx = int(np.abs(stop - m_start)*(1.0/dt))
         
     m_strain = m_strain[lndx:rndx]
     for key in m_dq.keys():
-        m_dq[key] = m_dq[key][lndx*dt:rndx*dt]
+        m_dq[key] = m_dq[key][int(lndx*dt):int(rndx*dt)]
 
     meta['start'] = start
     meta['stop']  = stop
