@@ -99,3 +99,9 @@ ENV/
 
 # data cache
 cache/
+
+# misc
+H1files
+H1filesdone
+L1files
+L1filesdone
