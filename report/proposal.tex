@@ -1,0 +1,33 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[letterpaper ,left=2cm,top=2.25cm,bottom=2.25cm,right=2.5cm,nohead,nofoot]{geometry}
+\usepackage{color}
+\definecolor{LinkColor}{rgb}{0.256,0.439,0.588}
+\definecolor{MenuColor}{rgb}{0.739,0.394,0.399}
+\usepackage[colorlinks,breaklinks,urlcolor=LinkColor]{hyperref}
+\newcommand{\menuItem}[1]{{\color{MenuColor}\textsf{#1}}}
+\usepackage{bm}
+\usepackage{bbold}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[scaled]{beramono}
+\usepackage{hhline}
+\begin{document}
+
+\title{\bf{PHYS 255: Astrophysics Data Project Proposal}\\
+\it{Identification and classification of Gravitational wave data}}
+\author{\bf{J. Andrew Casey-Clyde}}
+\maketitle
+
+The goal of my project is to use PCA to first characterize and differentiate possible gravitational wave sources, and then to use multiple machine learning techniques to identify and classify potentially interesting signals.
+
+Since Advanced LIGO came online in 2015, there have only been 2 confirmed gravitational wave events \cite{TheLIGOScientificCollaboration2016} \cite{Abbott2016}. However, this small number of events is not necessarily due to a lack of events to discover. In fact, according to the LIGO scientific collaboration, Ground based detectors such as Advanced LIGO should be able to detect approximately 40 Binary Coalescence events per year \cite{LIGOScientificCollaboration2010}, or roughly 10 events in the 4 months that Advanced LIGO last took data for. Since these events should be detectable far more often than they are being detected, it stands to reason that this discrepancy is due not to a lack of events, but to them simply having yet to be found.
+
+To this end, I plan on applying PCA techniques to first attempt to identify both, the number of source categories, as well as possible markers for interesting signals. I then plan to apply multiple classification techniques, including outlier detection techniques (such as those used by Baron and Poznanski \cite{Baron2016}), as well as Gaussian Mixture Model (GMM) approaches, such as those use by de Souza et al. \cite{DeSouza2017}, or possibly the ensemble clustering methods use by Hojnacki et al. \cite{Hojnacki2008}.
+
+\bibliography{bib}
+\bibliographystyle{unsrt}
+
+\end{document}

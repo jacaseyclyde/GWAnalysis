@@ -99,3 +99,5 @@ ENV/
 
 # data cache
 cache/
+*.hdf5
+*.zip
