@@ -108,3 +108,5 @@ L1files
 L1filesdone
 *.zip
 *.gz
+*.aux
+*.pdf
