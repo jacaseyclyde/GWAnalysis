@@ -100,4 +100,10 @@ ENV/
 # data cache
 cache/
 *.hdf5
+
+# misc
+H1files
+H1filesdone
+L1files
+L1filesdone
 *.zip
