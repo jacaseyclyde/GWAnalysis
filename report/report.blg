@@ -4,46 +4,45 @@ The top-level auxiliary file: report.aux
 The style file: unsrt.bst
 Database file #1: library.bib
 Warning--empty journal in TheLIGOScientificCollaboration2016
-Warning--empty journal in Mukund2016
-You've used 11 entries,
+You've used 10 entries,
             1791 wiz_defined-function locations,
-            508 strings with 5587 characters,
-and the built_in function-call counts, 1876 in all, are:
-= -- 124
-> -- 125
+            508 strings with 5389 characters,
+and the built_in function-call counts, 1864 in all, are:
+= -- 130
+> -- 118
 < -- 0
-+ -- 47
-- -- 36
-* -- 105
-:= -- 327
-add.period$ -- 29
-call.type$ -- 11
-change.case$ -- 10
++ -- 44
+- -- 34
+* -- 118
+:= -- 315
+add.period$ -- 26
+call.type$ -- 10
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 81
+cite$ -- 11
+duplicate$ -- 74
 empty$ -- 191
-format.name$ -- 36
-if$ -- 402
+format.name$ -- 34
+if$ -- 401
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 9
-newline$ -- 54
-num.names$ -- 11
-pop$ -- 51
+int.to.str$ -- 10
+missing$ -- 8
+newline$ -- 49
+num.names$ -- 10
+pop$ -- 44
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 44
+skip$ -- 41
 stack$ -- 0
-substring$ -- 18
+substring$ -- 55
 swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 12
-width$ -- 13
-write$ -- 104
-(There were 2 warnings)
+warning$ -- 1
+while$ -- 13
+width$ -- 12
+write$ -- 96
+(There was 1 warning)
