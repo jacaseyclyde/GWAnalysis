@@ -40,11 +40,6 @@ St{\'{e}}phane Mallat.
 \newblock {\em {A Wavelet Tour of Signal Processing}}.
 \newblock Academic Press, 2nd edition, 1999.
 
-\bibitem{Wasilewski}
-Filip Wasilewski.
-\newblock {PyWavelets - Wavelet Transforms in Python — PyWavelets
-  Documentation}.
-
 \bibitem{Ivezic2014}
 {\v{Z}}eljko Ivezi{\'{c}}, Andrew~J. Connolly, Jacob~T. VanderPlas, and
   Alexander Gray.
@@ -54,5 +49,10 @@ Filip Wasilewski.
 \bibitem{LIGOScientificCollaboration2015}
 {LIGO Scientific Collaboration}.
 \newblock {LIGO Open Science Center release of S6}, 2015.
+
+\bibitem{Wasilewski}
+Filip Wasilewski.
+\newblock {PyWavelets - Wavelet Transforms in Python — PyWavelets
+  Documentation}.
 
 \end{thebibliography}
