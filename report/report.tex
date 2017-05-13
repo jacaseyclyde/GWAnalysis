@@ -6,7 +6,8 @@
 \newcommand{\myemail}{james.casey-clyde@sjsu.edu}
 
 \usepackage{amsmath,amsfonts}
-%%\usepackage[numbers]{natbib}
+\usepackage[colorlinks]{hyperref}
+\usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -84,10 +85,10 @@ Gravitational wave detectors such as LIGO and Virgo offer new insights into our 
 %% the last two numeral of the year of publication as our KEY for
 %% each reference.
 
-\section{Introduction (rework needed)} %% rework this section
-In 1916, based on his theory of general relativity, Einstein first predicted the existence of gravitational waves \cite{Einstein1916}. 100 years later, in 2016, the first two gravitaitonal wave events were confirmed using data from Advanced LIGO \cite{TheLIGOScientificCollaboration2016} \cite{Abbott2016}, finally confirming the century old prediction. However, while it was the data from Advanced LIGO which led to this confirmation, this is not the first gravitational wave data to come from LIGO (and in fact, at the time of this writing, the Advanced LIGO data is not publically available). And while Advanced LIGO does indeed boast improved sensitivity as compared to its previous iterations, this does not preclude the possibility that there may be gravitational wave events hidden in previous data releases (and at the very least, these techniques would also be applicable to Advanced LIGO data, once it is released). Considering the less sensitive nature of older LIGO data, and it's impact on searching for gravitational waves, as well as the fact that these transients are fairly short lived, it makes sense to apply machine learning techniques to attempt to find these signals, instead of trying to search these datasets by eye, which is both, far more error-prone and much more time consuming.
+\section{Introduction}
+The search for gravitaional waves was a long one. Sparked in 1916 by Albert Einstein's theory of General Relativity, it wasn't until 100 years later, in 2016, that the first two gravitaitonal wave events were confirmed using data from Advanced LIGO's sensitive instruments \citep{TheLIGOScientificCollaboration2016} \citep{Abbott2016}. The sensitivity of LIGO instruments comes with the double edged sword of large quantities of data. Furthermore, this data is subject to large amounts of terrestrial noise, which can mimic transient gravitational wave events. This makes the data difficult for manual examination, making it a prime candidate for clustering and machine learning techniques.
 
-In fact, multiple machine learning techniques have been explored specifically for the purposes of processing LIGO data, including both Artificial Neural Networks (ANN) \cite{Biswas2013} and Difference Boosting Neural Networks (DBNN) \cite{Mukund2016}. These techniques can be used, in conjunction with auxiliary channel data, to identify non-astrophysical transients, which may then be removed from the dataset. Once these datasets are removed, the remaining transients can then be further classified (such as by using hierarchical clustering algorithms) in order to determine potential transient categories, as well as how related those categories are morphologically.
+In this paper, I apply the Kliene Welle algorithm \citep{Chatterji2004}\citep{Blackburn2007} to the first two weeks of LIGO's S6 data release, which uses clustering to find energy overdensities in gravitational wave timeseries and identify transient events. I then use a Multi-Layer Perceptron (MLP) neural network to classify these events, with LIGO hardware injections serving as simulations of various classes of gravitaitonal waves.
 
 \section{Methods}
 In order to classify transients in the LIGO data, they must first be found. To this end, I apply the Kleine Welle algorithm, which decomposes wavelets into the time-scale domain and searches for regions of energy overdensities in the signal \cite{Biswas2013}\cite{Blackburn2007}. These techniques may be applied to all detector channels to extract transients, and in fact will be necessary for differentiating between terrestrial and astrophysical transient sources.
@@ -107,7 +108,7 @@ The LIGO gravitational wave data is characterized by Gaussian noise, with non-Ga
 \caption{ASD after whitening}
 \label{fig:postwhite}
 \end{subfigure}
-\caption{ASD vs. frequency for the Advanced LIGO data near GW150914, before and after whitening. Notice that in about the $80-300\mathrm{Hz}$ range, the noise is at a minumum, and relatively constant. This is the range we wish to search for gravitational waves.}
+\caption{ASD vs. frequency for the Advanced LIGO data near GW150914, before and after whitening. Notice that in about the $80-300\mathrm{Hz}$ range, the noise is at a minumum, and relatively constant. This is the range we wish to search for transient events.}
 \label{fig:asd}
 \end{figure}
 
@@ -141,12 +142,14 @@ where the number of degrees of freedom $N$ is the number of elements in the clus
 \end{figure}
 
 \subsection{Event Classification}
-Once transients have been identified in the strain data, they can be classified using a neural network; in this case, I choose to use a Multi-Layered Perceptron (MLP), one of the more popular neural network models. For training data, we can use hardware injected events for astrophysical event classification. Additionally, we also need non-astrophysical events to train on. These can be generated by looking for events in each detector that do not overlap with events from the other detector (e.g., an events in H1 that do not overlap with events from L1). Once the MLP has been trained on this data, we can then run it on all the events for classification.
+Once transients have been identified in the strain data, they can be classified using a neural network; in this case, I choose to use a Multi-Layered Perceptron, one of the more popular neural networks. For training data, we can use hardware injected events for astrophysical event classification. Additionally, we also need non-astrophysical events to train on. These can be generated by looking for events in each detector that do not overlap with events from the other detector (i.e., events in H1 that do not overlap with events from L1). By applying the hardware injections and independent events as labels, we can then form a set of data for training and testing.
 
 \section{Analysis}
 Keeping in mind that each LIGO science run contains data collected using progressively more sensitive instruments, I choose to apply these techniques to the first 2 weeks of the S6 data release \cite{LIGOScientificCollaboration2015}, from the most recent data collection run before Advanced LIGO instruments came online, which offers the best sensitivity for publically available data. Each data segment from each detector is then run through the Kleine Welle selection algorithm as described above. When a significant cluster is found, it is recorded in a data file, with start and end times, event length, the significance of the event, and the cluster center (in time, scale, and energy). Using this technique, I find 761 events from H1, and 912 events from L1.
 
-If the cluster aligns with a hardware injection (determined using the cluster time-center), the type of injection is also recorded. These injected events represent the types of events we expect to see astrophysically, and can be used to train the MLP to recognize each of these types of events. Additionally, the most common type of event we expect to see are terrestrial events. These can be found by comparing the events found for H1 and L1, and looking for non-injection events that are not common to both (adetermined by looking for events that do not overlap).
+To identify injection clusters, I compare the time coordinate of the cluster center to the the injection time periods, and find NUM Compact Binary Coalescence (CBC) injections, NUM Burst injections, and NUM Stochastic injections for H1, and NUM, NUM, and NUM CBC, Burst, and Stochastic injections, respectivley, for L1. As described above, I then split the data into training and testing, with the testing data achieving a score of SCORE.
+
+With this, I then apply the MLP to the rest of the data, and find NUM CBC events, NUM Burst events, and NUM Stochastic events, out of NUM events total. By applying the MLP to the H1 and L1 data seperately, these events can then be validated against each other to find gravitational wave candidates.
 
 \bibliography{library}
 \bibliographystyle{unsrt}

@@ -1,12 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{Einstein1916}
-Albert Einstein.
-\newblock {N{\"{a}}herungsweise Integration der Feldgleichungen der
-  Gravitation}.
-\newblock {\em Sitzungsberichte der K{\"{o}}niglich Preu{\ss}ischen Akad. der
-  Wissenschaften (Berlin), Seite 688-696.}, 1916.
-
 \bibitem{TheLIGOScientificCollaboration2016}
 {The LIGO Scientific Collaboration} and Others.
 \newblock {GW150914: First results from the search for binary black hole
@@ -19,6 +12,16 @@ B.P. Abbott and Others.
   Binary Black Hole Coalescence}.
 \newblock {\em Phys. Rev. Lett.}, 116(24):241103, jun 2016.
 
+\bibitem{Chatterji2004}
+S~Chatterji, L~Blackburn, G~Martin, and E~Katsavounidis.
+\newblock {Multiresolution techniques for the detection of gravitational-wave
+  bursts}.
+\newblock {\em Class. Quantum Gravity}, 21(20):S1809--S1818, oct 2004.
+
+\bibitem{Blackburn2007}
+Lindy Blackburn.
+\newblock {KleineWelle Technical Document}, 2007.
+
 \bibitem{Biswas2013}
 Rahul Biswas, Lindy Blackburn, Junwei Cao, Reed Essick, Kari~Alison Hodge,
   Erotokritos Katsavounidis, Kyungmin Kim, Young-Min Kim, Eric-Olivier~Le
@@ -27,17 +30,6 @@ Rahul Biswas, Lindy Blackburn, Junwei Cao, Reed Essick, Kari~Alison Hodge,
 \newblock {Application of machine learning algorithms to the study of noise
   artifacts in gravitational-wave data}.
 \newblock {\em Phys. Rev. D, vol. 88, Issue 6, id. 062003}, 88(6), mar 2013.
-
-\bibitem{Mukund2016}
-Nikhil Mukund, Sheelu Abraham, Shivaraj Kandhasamy, Sanjit Mitra, and
-  Ninan~Sajeeth Philip.
-\newblock {Transient Classification in LIGO data using Difference Boosting
-  Neural Network}.
-\newblock sep 2016.
-
-\bibitem{Blackburn2007}
-Lindy Blackburn.
-\newblock {KleineWelle Technical Document}, 2007.
 
 \bibitem{LIGOScientificCollaboration}
 {LIGO Scientific Collaboration} and Jonah Kanner.
