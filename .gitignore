@@ -332,3 +332,5 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 
+*.slides.odp#
+*.speech.odt#
